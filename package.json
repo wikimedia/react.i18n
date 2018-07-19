@@ -9,7 +9,7 @@
   },
 	"repository": {
 		"type": "git",
-		"url": "https://gerrit.wikimedia.org/r/plugins/gitiles/react.i18n/"
+		"url": "https://gerrit.wikimedia.org/r/react.i18n"
 	},
   "license": "GPL-3.0-or-later",
   "dependencies": {
