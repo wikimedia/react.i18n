@@ -1,16 +1,16 @@
 {
   "name": "@wikimedia/react.i18n",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React bindings for jQuery.i18n",
   "main": "index.js",
   "scripts": {
     "prepublish": "babel src -d dist",
     "test": "eslint . && jest"
   },
-	"repository": {
-		"type": "git",
-		"url": "https://gerrit.wikimedia.org/r/react.i18n"
-	},
+  "repository": {
+    "type": "git",
+    "url": "https://gerrit.wikimedia.org/r/react.i18n"
+  },
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "cldr-data": "^32.0.0",
