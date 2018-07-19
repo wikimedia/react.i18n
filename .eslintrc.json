@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "airbnb",
+    "wikimedia"
+  ],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "one-var": ["off"]
+  }
+}

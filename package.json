@@ -1,0 +1,47 @@
+{
+  "name": "@wikimedia/react.i18n",
+  "version": "1.0.0",
+  "description": "React bindings for jQuery.i18n",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "babel src -d dist",
+    "test": "eslint . && jest"
+  },
+	"repository": {
+		"type": "git",
+		"url": "https://gerrit.wikimedia.org/r/plugins/gitiles/react.i18n/"
+	},
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "cldr-data": "^32.0.0",
+    "cldrpluralruleparser": "^1.2.0",
+    "jquery": "^3.0.0",
+    "jquery.i18n": "https://github.com/wikimedia/jquery.i18n/archive/v1.0.4.tar.gz",
+    "prop-types": "^15.6.0",
+    "react": "^16.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^23.4.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-wikimedia": "^0.6.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "jest": "^23.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "jest": {
+    "roots": [
+      "src"
+    ],
+    "setupFiles": [
+      "./test-env.js"
+    ]
+  }
+}
