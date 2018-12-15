@@ -1,60 +1,83 @@
+import { createElement } from 'react';
+import { shallow } from 'enzyme';
 import IntlProvider from './intl-provider';
 import Message from './message';
 
 test( 'will get a basic message string', () => {
-	// eslint-disable-next-line no-unused-vars
-	const provider = new IntlProvider( {
-		locale: 'en',
-		messages: {
-			en: {
-				test: 'TEST'
-			}
-		}
-	} );
+	const result = shallow(
+		createElement(
+			IntlProvider,
+			{
+				locale: 'en',
+				messages: {
+					en: {
+						test: 'TEST'
+					}
+				}
+			},
+			createElement(
+				Message,
+				{
+					id: 'test'
+				}
+			)
+		)
+	);
 
-	const text = Message( {
-		id: 'test'
-	} );
-	expect( text ).toStrictEqual( 'TEST' );
+	expect( result.html() ).toStrictEqual( 'TEST' );
 } );
 
 test( 'will get a basic message string with a placeholder', () => {
-	// eslint-disable-next-line no-unused-vars
-	const provider = new IntlProvider( {
-		locale: 'en',
-		messages: {
-			en: {
-				test: 'TEST $1'
-			}
-		}
-	} );
+	const result = shallow(
+		createElement(
+			IntlProvider,
+			{
+				locale: 'en',
+				messages: {
+					en: {
+						test: 'TEST $1'
+					}
+				}
+			},
+			createElement(
+				Message,
+				{
+					id: 'test',
+					placeholders: [
+						'RIGHT'
+					]
+				}
+			)
+		)
+	);
 
-	const text = Message( {
-		id: 'test',
-		placeholders: [
-			'RIGHT'
-		]
-	} );
-	expect( text ).toStrictEqual( 'TEST RIGHT' );
+	expect( result.html() ).toStrictEqual( 'TEST RIGHT' );
 } );
 
 test( 'will get a basic message string with multiple placeholders', () => {
-	// eslint-disable-next-line no-unused-vars
-	const provider = new IntlProvider( {
-		locale: 'en',
-		messages: {
-			en: {
-				test: '$2 TEST $1'
-			}
-		}
-	} );
+	const result = shallow(
+		createElement(
+			IntlProvider,
+			{
+				locale: 'en',
+				messages: {
+					en: {
+						test: '$2 TEST $1'
+					}
+				}
+			},
+			createElement(
+				Message,
+				{
+					id: 'test',
+					placeholders: [
+						'RIGHT',
+						'LEFT'
+					]
+				}
+			)
+		)
+	);
 
-	const text = Message( {
-		id: 'test',
-		placeholders: [
-			'RIGHT',
-			'LEFT'
-		]
-	} );
-	expect( text ).toStrictEqual( 'LEFT TEST RIGHT' );
+	expect( result.html() ).toStrictEqual( 'LEFT TEST RIGHT' );
 } );
