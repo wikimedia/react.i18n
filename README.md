@@ -1,22 +1,7 @@
 react.i18n
 ===========
 
-React i18n provides [React](https://reactjs.org) bindings for [jQuery.i18n](https://github.com/wikimedia/jquery.i18n).
-
-Setup
------
-`jQuery` needs to be in the global scope attached to the `window`. This can be done with something like [expose-loader](https://github.com/webpack-contrib/expose-loader) which a config like this:
-```javascript
-{
-	test: require.resolve( 'jquery' ),
-	use: [
-		{
-			loader: 'expose-loader',
-			options: 'jQuery'
-		}
-	]
-}
-```
+React i18n provides [React](https://reactjs.org) bindings for [banana-i18n](https://github.com/wikimedia/banana-i18n).
 
 Usage
 -----
@@ -26,18 +11,18 @@ import { IntlProvider, Message } from '@wikimedia/react.i18n';
 const locale = 'en-US';
 
 const messages = {
-	en: {
-		'hello-world': 'Hello $1!',
-		'world': 'World',
-	}
+  en: {
+  'hello-world': 'Hello $1!',
+  'world': 'World',
+  }
 };
 
 const App = () => (
-	<IntlProvider locale={locale} messages={messages}>
-		<Message id="hello-world" placeholders={[
-			'David'
-		]} />
-	</IntlProvider>
+  <IntlProvider locale={locale} messages={messages}>
+    <Message id="hello-world" placeholders={[
+      'David'
+    ]} />
+  </IntlProvider>
 );
 
 export default App;
@@ -46,24 +31,48 @@ export default App;
 // Hello David!
 ```
 
-The `Message` component can also be used as a standard function that will return a string (if possible) or a React component (if any of the placeholders are React components):
-```javascript
-const helloWorld = Message({
-	id: 'hello-world',
-	placeholders: [
-		'David',
-	]
-});
-
-console.log(helloWorld);  // Hello David!
-```
-
 The placeholders can also be React components:
 ```javascript
 <Message id="hello-world" placeholders={[
-	<strong><Message id="world" /></strong>,
+  <strong><Message id="world" /></strong>,
 ]} />
 
 // Rendered Output:
 // Hello <strong>World</strong>!
 ```
+
+The `BananaContext` can also be used directly to return a string as described in
+React's [Context.Consumer](https://reactjs.org/docs/context.html#contextconsumer)
+documentation.
+```javascript
+import { IntlProvider, BananaContext } from '@wikimedia/react.i18n';
+
+const locale = 'en-US';
+
+const messages = {
+  en: {
+  'hello-world': 'Hello $1!',
+  'world': 'World',
+  }
+};
+
+const App = () => (
+  <IntlProvider locale={locale} messages={messages}>
+    <BananaContext.Consumer>
+      {banana =>
+        banana.i18n( 'hello-world', 'David' )
+      }
+    </BananaContext.Consumer>
+  </IntlProvider>
+);
+
+export default App;
+
+// Rendered Output:
+// Hello David!
+```
+
+Migrating from 1.x
+------------------
+* `Message` can no longer be used as a function. To use the Banana object
+	directly, get the context consumer as described above.
