@@ -1,7 +1,7 @@
 {
   "name": "@wikimedia/react.i18n",
   "version": "2.0.0",
-  "description": "React bindings for jQuery.i18n",
+  "description": "React bindings for banana-i18n",
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "babel src -d dist",
