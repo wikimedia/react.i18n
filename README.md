@@ -12,8 +12,8 @@ const locale = 'en-US';
 
 const messages = {
   en: {
-  'hello-world': 'Hello $1!',
-  'world': 'World',
+    'hello-world': 'Hello $1!',
+    'world': 'World',
   }
 };
 
@@ -51,8 +51,8 @@ const locale = 'en-US';
 
 const messages = {
   en: {
-  'hello-world': 'Hello $1!',
-  'world': 'World',
+    'hello-world': 'Hello $1!',
+    'world': 'World',
   }
 };
 
@@ -72,7 +72,37 @@ export default App;
 // Hello David!
 ```
 
+or with React's [Context Hook](https://reactjs.org/docs/hooks-reference.html#usecontext):
+```javascript
+import { useContext } from 'react';
+import { IntlProvider, BananaContext } from '@wikimedia/react.i18n';
+
+const locale = 'en-US';
+
+const messages = {
+  en: {
+    'hello-world': 'Hello $1!',
+    'world': 'World',
+  }
+};
+
+const App = () => {
+  const banana = useContext(BananaContext);
+
+  return (
+    <IntlProvider locale={locale} messages={messages}>
+      {banana.i18n( 'hello-world', 'David' )}
+    </IntlProvider>
+  );
+};
+
+export default App;
+
+// Rendered Output:
+// Hello David!
+```
+
 Migrating from 1.x
 ------------------
-* `Message` can no longer be used as a function. To use the Banana object
-	directly, get the context consumer as described above.
+*   `Message` can no longer be used as a function. To use the Banana object
+    directly, get the context consumer as described above.
