@@ -1,6 +1,6 @@
 {
   "name": "@wikimedia/react.i18n",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "React bindings for banana-i18n",
   "main": "dist/index.js",
   "scripts": {
@@ -41,7 +41,7 @@
     ]
   },
   "dependencies": {
-    "banana-i18n": "^1.0.1",
+    "banana-i18n": "^1.1.0",
     "prop-types": "^15.6.2"
   }
 }
