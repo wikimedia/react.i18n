@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import BananaContext from './banana-context';
 
 // @see https://github.com/yahoo/react-intl/blob/v2.4.0/src/components/message.js
-const Message = ( { id, placeholders = [] } ) => (
-	createElement(
+function Message( { id, placeholders = [] } ) {
+	return createElement(
 		BananaContext.Consumer,
 		null,
 		( banana ) => {
@@ -54,8 +54,8 @@ const Message = ( { id, placeholders = [] } ) => (
 			// warn about a missing `key` prop with rich-text message formatting.
 			return createElement( Fragment, null, ...nodes );
 		}
-	)
-);
+	);
+}
 
 Message.propTypes = {
 	id: PropTypes.string.isRequired,

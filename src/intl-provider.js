@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Banana from 'banana-i18n';
 import BananaContext from './banana-context';
 
-const IntlProvider = ( { locale, messages, children } ) => {
+function IntlProvider( { locale, messages, children } ) {
 	// Convert to lowercase.
 	// @see https://github.com/wikimedia/jquery.i18n/issues/120
 	const banana = new Banana( locale.toLowerCase(), {
@@ -17,7 +17,7 @@ const IntlProvider = ( { locale, messages, children } ) => {
 		},
 		children
 	);
-};
+}
 
 IntlProvider.propTypes = {
 	children: PropTypes.node.isRequired,
